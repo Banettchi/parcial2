@@ -1,4 +1,4 @@
-package java.math
+package co.edu.eci.math;
 
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -11,13 +11,14 @@ import java.util.List;
 @RestController
 public class MathController {
     @GetMapping("/fibonacci")
-    public String fibonacci(@RequestParam int a, @RequestParam int b) {
+    public String fibonacci(@RequestParam int f_a, @RequestParam int f_b) {
         List<Long> fib = new ArrayList<>();
-        while (x <= b) {
-            if (x >= a) fib.add(x);
+        long x = 0 , b = 1;
+        while (x <= f_b) {
+            if (x >= f_a) fib.add(x);
             long temp = x + b;
             x = b;
-            b = temp
+            b = temp;
         }
 
         List<Long> ventana = new ArrayList<>();
@@ -25,6 +26,6 @@ public class MathController {
             ventana.add(fib.get(i) + fib.get(i+1) + fib.get(i+2));
         }
 
-        return fib + ventana
+        return fib + "|" + ventana;
     }
 }
